@@ -1,2 +1,1 @@
-# python-project-04
- 
+# Store Inventory
