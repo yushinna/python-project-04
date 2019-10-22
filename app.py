@@ -48,7 +48,6 @@ def menu_loop():
 
         if choice in menu:
             menu[choice]()
-    print('')
 
 
 def add_product_from_csv():
