@@ -1,1 +1,15 @@
 # Store Inventory
+A console application that allows you to easily interact with data for a store's inventory.
+The data needs to be cleaned from the CSV before it is to be persisted in the database. All interactions with the records should use ORM methods for viewing records, creating records, and exporting a new CSV backup.
+
+## Requirements
+Install the project requirements from the provided requirements.txt file by running the following command in your terminal:
+```
+pip3 install -r requirements.txt
+```
+
+## Usage
+Run the application so you can connect to the database,  load the CSV products data into the created table, and make menu choices and interact with the application.
+```
+python3 app.py
+```
