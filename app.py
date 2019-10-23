@@ -32,7 +32,6 @@ def initialize():
 def menu_loop():
     """Create a Menu to make selections"""
     choice = None
-
     while choice != 'q':
         clear_screen()
         print('-' * 20)
@@ -43,16 +42,14 @@ def menu_loop():
             print('{} {}'.format(key, value.__doc__))
         print('-' * 20)
         print("Enter 'q' to quit.")
-        choice = input('Action: ').lower().strip()
 
+        choice = input('Action: ').lower().strip()
         if choice in menu:
             menu[choice]()
-
         else:
             if choice != 'q':
                 print("Invalid input.. please enter 'v', 'a', 'b' or 'q'")
                 input('Press ENTER to continue.. ')
-
     print('See you again!')
 
 
@@ -70,7 +67,6 @@ def add_product_from_csv():
 
     try:
         Product.insert_many(product_list).execute()
-
     except IntegrityError as ex:
         print(ex)
         print('Failed to import csv file.')
@@ -98,14 +94,11 @@ def view_product_detail(query=None):
             next_action = input('Action: [N/s/q]').lower().strip()
             if next_action == 'n':
                 continue
-
             if next_action == 's':
                 search_product_by_id()
                 break
-
             else:
                 break
-
     else:
         try:
             show_product_detail(Product.get(Product.product_id == query))
@@ -115,7 +108,6 @@ def view_product_detail(query=None):
             next_action = input('Action: [S/q]').lower().strip()
             if next_action == 's':
                 search_product_by_id()
-
         except Product.DoesNotExist:
             print('product_id {} does not exist. Please try again.'.format(query))
             search_product_by_id()
@@ -124,14 +116,11 @@ def view_product_detail(query=None):
 def search_product_by_id():
     """Search and display a product by its ID"""
     query = None
-
     while query is None:
         try:
             query = int(input('Enter product id: '))
-
         except ValueError:
             print('Invalid input.. please enter a number.')
-
     view_product_detail(query=query)
 
 
@@ -162,7 +151,6 @@ def add_new_product():
     if input('Save Entry? [Y/n] ').lower() != 'n':
         try:
             Product.get(Product.product_name == new_product_name)
-
             if input('Product name {} exists. Update Entry? [Y/n] '.format(
                         new_product_name)).lower() != 'n':
                 Product.update(
@@ -171,7 +159,6 @@ def add_new_product():
                 ).where(Product.product_name == new_product_name).execute()
                 print('Save successfully!')
                 input('Press ENTER to continue.. ')
-
         except Product.DoesNotExist:
             Product.create(
                 product_name=new_product_name,
@@ -180,7 +167,6 @@ def add_new_product():
             )
             print('Save successfully!')
             input('Press ENTER to continue.. ')
-
     else:
         print('Discard changes.')
         input('Press ENTER to continue.. ')
