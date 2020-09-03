@@ -152,7 +152,7 @@ def add_new_product():
         try:
             Product.get(Product.product_name == new_product_name)
             if input('Product name {} exists. Update Entry? [Y/n] '.format(
-                        new_product_name)).lower() != 'n':
+                    new_product_name)).lower() != 'n':
                 Product.update(
                     product_price=new_product_price,
                     product_quantity=new_product_quantity
