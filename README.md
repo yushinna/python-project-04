@@ -5,6 +5,7 @@ The data needs to be cleaned from the CSV before it is to be persisted in the da
 
 ## Requirements
 Activate the virtual environment by running the following command in your terminal.
+
 If using Mac/Linux:
 ```
 source ./env/bin/activate
